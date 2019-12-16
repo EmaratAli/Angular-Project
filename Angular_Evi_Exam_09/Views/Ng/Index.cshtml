@@ -1,0 +1,48 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+<div class="row" ng-app="productApp">
+    <div class="col" ng-controller="productCtrl">
+        <table  class=" table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Current Price</th>
+                </tr>
+            </thead>
+            <tbody>         
+                {
+                    <tr ng-repeat="p in products">
+                        <td>{{p.name}}</td>
+                        <td>{{p.price}}</td>
+                        <td>{{p.discount}}</td>
+                        <td>{{p.currentPrice}}</td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<environment include="Development,Production">
+    <script src="~/lib/angular.js"></script>
+    <script type="text/javascript">
+        angular.module("productApp", [])
+            .controller("productCtrl", ($scope, $http) => {
+                $http.get("Ng/List")
+                    .then((result) => {
+                        $scope.products = result.data;
+                    }, (err) => {
+                        console.log(err);
+                    }
+                    );
+            })
+    </script>
+</environment>

@@ -1,0 +1,54 @@
+﻿@model Angular_Evi_Exam_09.Models.Product
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class=" row">
+    <div class="col">
+        <h3 class="text-center">Add New Product</h3>
+        <div >
+            <form asp-action="Create" asp-controller="Products" method="post">
+                <table class="table table-borderless "style="width:450px;" >
+                    <tr>
+                        <th>Name</th>
+                        <td>
+                            <input type="text" class="form-control form-control-sm" asp-for="Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>
+                            <input type="text" class="form-control form-control-sm" asp-for="Price" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Discount</th>
+                        <td>
+                            <input type="text" class="form-control form-control-sm" asp-for="Discount" />
+                            <span asp-validation-for="Discount" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a asp-controller="Products" asp-action="Index">Back</a>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Insert</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<h1>Create</h1>
+@section scripts{
+    <environment include="Development,Production">
+        <script src="~/lib/validation/jquery.validate.js"></script>
+        <script src="~/lib/validation/unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </environment>
+}

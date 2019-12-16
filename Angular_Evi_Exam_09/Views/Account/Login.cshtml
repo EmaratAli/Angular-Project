@@ -1,0 +1,46 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <h3>Login</h3>
+        <div>
+            <form asp-action="Login" method="post" asp-controller="Account">
+                <table class="table table-borderless" style="width:450px;">
+                    <tr>
+                        <th style=" width:120px">User Name</th>
+                        <td>
+                            <input type="text" class="form-control form-control-sm" asp-for="UserName" />
+                            <span asp-validation-for="UserName" class=" text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Password</th>
+                        <td>
+                            <input type="text" class="form-control form-control-sm" asp-for="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a asp-controller="Account" asp-action="Register">Register</a>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">LogIn</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <environment include="Development,Production">
+        <script src="~/lib/validation/jquery.validate.js"></script>
+        <script src="~/lib/validation/unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </environment>}
+

@@ -1,0 +1,29 @@
+﻿@model Angular_Evi_Exam_09.Models.Product
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class=" row">
+    <div class="col">
+        <h3 class="text-danger">Sure to delete Product</h3>
+        <div >
+            <p>Sure to Delete?</p><br />
+            
+                <form method="post" asp-action="DeleteConfirm" asp-controller="Products">
+                    <input type="hidden" asp-for="Id" />
+                    <br />
+                    <button type="submit" name="Delete" class="btn btn-danger">Delete</button> 
+                </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <environment include="Development,Production">
+        <script src="~/lib/validation/jquery.validate.js"></script>
+        <script src="~/lib/validation/unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script src="~/lib/ajax/dist/jquery.unobtrusive-ajax.js"></script>
+    </environment>
+}

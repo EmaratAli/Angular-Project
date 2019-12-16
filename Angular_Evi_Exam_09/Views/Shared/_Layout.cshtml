@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <environment include="Development,Production">
+        <link href="~/lib/bs/css/bootstrap.css" rel="stylesheet" />
+        <script src="~/lib/jquery/jquery.js"></script>
+    </environment>
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+        }
+    </style>
+    @RenderSection("style", false)
+</head>
+<body>
+    <div class="container mb-2">
+        <ul class="nav bg-light border-bottom shadow-sm p-3">
+            <li class="nav-item">
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home">Ev_09</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Products">Product</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Index" asp-controller="Ng">Angular</a>
+            </li>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item ml-auto">
+                <a class="nav-link" asp-action="Logout" asp-controller="Account">Logout</a>
+            </li>
+            }
+            else
+            {
+            <li class="nav-item ml-auto">
+                <a class="nav-link" asp-action="Register" asp-controller="Account">Register</a>
+            </li> 
+            <li class="nav-item ">
+                <a class="nav-link" asp-action="Login" asp-controller="Account">LogIn</a>
+            </li>
+            }
+        </ul>
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <div class="container">
+        <p>&copy; @DateTime.Now.Year </p>
+    </div>
+    <environment include="Development,Production">
+        <script src="~/lib/bs/js/bootstrap.js"></script>
+    </environment>
+    @RenderSection("scripts",false)
+</body>
+</html>
